@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imageslider</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="slider">
+        <div class="silde" style="display: block;">
+            <img src="https://plus.unsplash.com/premium_photo-1675368244123-082a84cf3072?q=80&w=1900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <div class="silde">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <div class="silde">
+            <img src="https://images.unsplash.com/photo-1682687982049-b3d433368cd1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <div class="btn prev"><</div>
+        <div class="btn next">></div>
+     </div>
+</body>
+<script >
+    let currslide = 0;
+    let slides = document.querySelectorAll(".silde")
+    let prevbtn = document.querySelector(".prev")
+    let nextbtn = document.querySelector(".next")
+    function next(){
+        let nextslide = (currslide+1)%slides.length
+        slides[currslide].style.display = "none"
+        slides[nextslide].style.display = "block"
+        currslide = nextslide
+    }
+    nextbtn.addEventListener("click", next)
+    prevbtn.addEventListener("click", function(){
+        let prevslide = currslide == 0?slides.length-1:currslide-1
+        slides[currslide].style.display = "none"
+        slides[prevslide].style.display = "block"
+        currslide = prevslide
+    })
+    setInterval(next,5000)
+
+</script>
+</html>
